@@ -5,23 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geographical Boogie</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="text/javascript" src="mapdata.js"></script>		
-    <script  type="text/javascript" src="europemap.js"></script>
-
+    <script type="text/javascript" src="./map/mapdata.js"></script>		
+    <script type="text/javascript" src="./map/europemap.js"></script>
 </head>
 <body>
-    <h1>Welcome  Project Alpha!</h1>
+    <h1>Geographical Boogie</h1>
 
-      <nav>
+    <nav>
         <ul class="nav-bar">
-            <li class="active" id="nav-game">Game</li>
-            <li id="nav-leaderboard"><a href="leaderboard.html" id="nav-leaderboard">Leaderboard</a></li>
+            <li><a href="index.html" class="nav-link active">Game</a></li>
+            <li><a href="leaderboard.html" class="nav-link">Leaderboard</a></li>
         </ul>
-        
-        <div id="map"></div>
     </nav>
 
+    <div class="game-container">
+        <div id="game-input">
+        <h3 id="country-name">Click on the country:</h3>
+        <h1 id="country-display"></h1>
+        <button id="next-btn">Next Question</button>
+        <p id="score">Score: 0</p>
+        </div>
+
+        <div id="map"></div>
+    </div>
+
     <script src="script.js"></script>
-    
+
 </body>
 </html>
