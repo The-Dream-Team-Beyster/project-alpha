@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    font-family: "Comic Sans MS", "Chalkboard SE", "Marker Felt", sans-serif;
+    background-color: #a0d8f1; 
+    color: black;
+    text-align: center;
+}
+
+/* Login page  */
+
+.login {
+    width: 30%;               
+    margin: 50px auto;      
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;      
+}
+
+#login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    align-items: center; 
+}
+
+#login-form input {         
+    padding: 10px;           
+    border: 1px solid grey;   
+    border-radius: 15px;     
+    margin: 0 auto;     
+}
+
+
+button {
+    align-items: center; 
+    width: 20%;
+    padding: 1%;
+    color: white;
+    border-radius: 10px;
+    background-color: green;
+
+}
+button:hover {
+    background-color: #e04848;
+}
+
+.sign-up-option {
+    margin-top: 30px;    
+}
+
+.sign-up-option p {
+    margin:  0px ;  
+    font-weight: normal;
+}
+
+.sign-up-option a {
+    text-decoration: none;      
+    color: green;   
+}
+
+.sign-up-option a:hover {
+    text-decoration: bold; 
+    color: red;
+}
+
+/* Sign up page */
+
+.sign-up {
+    width: 30%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#sign-up-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.form-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 20px
+}
+
+.form-row label {
+    width: 30%;              
+    text-align: right;
+    font-weight: bold;
+}
+
+#sign-up-form input {
+    width: 65%;             
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
+button {
+    width: 30%;
+    padding: 1%;
+    color: white;
+    border-radius: 15px;
+    background-color: green;
+}
+
+button:hover {
+    background-color: #e04848;
+}
+
+.login-option {
+    margin-top: 30px;
+}
+
+.login-option p {
+    margin: 0;
+    font-weight: normal;
+}
+
+.login-option a {
+    text-decoration: none;
+    color: green;
+    font-weight: bold;  
+}
+
+.login-option a:hover {
+    color: red;
+    text-decoration: underline;
+}
