@@ -8,7 +8,7 @@ var simplemaps_europemap_mapdata={
     popups: "detect",
     
     //State defaults
-    state_description: "State description",
+    state_description: " ",
     state_color: "green",
     state_hover_color: "#cd1e1e",
     state_url: "",
