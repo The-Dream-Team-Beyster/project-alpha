@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS user_account;
 
 CREATE TABLE post (
     post_id INT GENERATED ALWAYS AS IDENTITY,
-    title VARCHAR (100) NOT NULL,
-    content VARCHAR (500) NOT NULL,
+    username VARCHAR (100) NOT NULL,
+    score INT NOT NULL,
     PRIMARY KEY (post_id)
 );
 
