@@ -7,8 +7,8 @@ class Location {
         this.funFact = funFact
     }
 
-    static async getCountryName() {
-        const response = await db.query("SQL HERE")
+    static async getCountryName(id) {
+        const response = await db.query("SELECT name FROM countries WHERE id = ($1);", [id]);
 
         if (response.rows.length === 0) {
             throw new Error("No Location Found")
