@@ -4,33 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geographical Boogie Login</title>
-    <Link rel="stylesheet" href="style.css">
+    <Link rel="stylesheet" href="login-style.css">
 </head>
-<body></body>
-    <div class="login">
+<body>
+    <div class="sign-up">
         <h1>Sign Up</h1>
-
-        <h3>Create an account</h3>
-        <form id="login-form">
-            <p>Create a username...</p>
-            <input type="text" id="username" placeholder="e.g. John Smith" required>
-
-            <p>Enter an email...</p>
-            <input type="email" id="email" placeholder="e.g. John.Smith@email.com"required>
-
-            <p>Enter a password...</p>
-            <input type="password" id="password"required>
-
-
-            <button type="submit">Play</button>
-        </form>
-    </div>
     
-    <div class="login-option">
-        <h4>Already have an account?</h4>
-        <p>Login <a href="./login.html">here</p>
-    </div>
+        <form id="sign-up-form">
+            <div class="form-row">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="e.g. John Smith" required>
+            </div>
 
-    <script src="login.js"></script>
+            <div class="form-row">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="e.g. John.Smith@email.com" required>
+            </div>
+
+            <div class="form-row">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+
+            <button type="submit">Create account</button>
+        </form>
+
+        <div class="login-option">
+            <p>Already have an account?</p>
+            <p>Login <a href="./login.html">here</a></p>
+        </div>
+    </div>
 </body>
+
 </html>
