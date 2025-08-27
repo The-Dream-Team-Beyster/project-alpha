@@ -24,6 +24,14 @@ next.addEventListener("click", () => {
     countryDisplay.textContent = randomCountry; 
 });
 
+next.addEventListener("click", () => {
+    next.textContent = "Next Country";
+  }, { once: true });
+
+next.addEventListener()
+
+
+
 function getCountry(name) {
     if(countryDisplay.textContent === name.target.attributes[3].textContent){
         scoreNum += 1
