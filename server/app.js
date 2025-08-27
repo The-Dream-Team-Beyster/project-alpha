@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 
-const locationRouter = require('./routes/location')
+const locationRouter = require('./routers/locations')
 const logger = require('./middleware/logger')
 
 const app = express()
