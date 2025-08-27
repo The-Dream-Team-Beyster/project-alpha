@@ -96,3 +96,19 @@ h1 {
   font-weight: bold;
   font-size: 18px;
 }
+
+svg path {
+  cursor: pointer;
+}
+
+svg path:hover {
+  fill: green
+}
+
+.correct {
+  fill: green
+}
+
+.incorrect {
+  fill: red
+}
