@@ -9,5 +9,6 @@ postRouter.get("/", authenticator, postController.index);
 postRouter.post("/", postController.create);
 postRouter.get("/:id", postController.show);
 postRouter.delete("/:id", postController.destroy);
+//postRouter.patch("/:score", postController.updateScore)
 
 module.exports = postRouter;

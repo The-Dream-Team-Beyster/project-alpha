@@ -8,6 +8,17 @@ class Post {
         this.score = score;
     }
 
+        static async createScore(id) {
+        const response = await db.query("SELECT score FROM post WHERE id = $1", [id])
+
+        if(response.rows.length === 0) {
+            throw new Error("score cannot be retrieved")
+        }
+
+        const score = response.rows[0].post_id
+        return score
+    }
+
     static async getAll() {
         const response = await db.query("SELECT * FROM post");
         return response.rows.map(p => new Post(p));

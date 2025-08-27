@@ -1,17 +1,9 @@
-require('dotenv').config();
 const fs = require('fs');
+require('dotenv').config();
 const db = require('./connect');
 
-// read the SQL schema and inserts
-const sql = fs.readFileSync('./server/db/countries.sql', 'utf8');
+const sql = fs.readFileSync('./database/setup.sql').toString();
 
 db.query(sql)
-  .then(() => {
-    console.log("✅ Database setup complete!");
-  })
-  .catch((err) => {
-    console.error("❌ Error setting up database:", err);
-  })
-  .finally(() => {
-    db.end();
-  });
+  .then(data => { db.end(); console.log("Setup complete")})
+  .catch(error => console.log(error));
