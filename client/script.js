@@ -30,13 +30,15 @@ next.addEventListener("click", () => {
 }, { once: true });
 
 // Shows feedback
-function showFeedback(text) {
+function showFeedback(text, correct) {
     feedback.textContent = text;
+    feedback.style.color = correct ? "green" : "red";  
     feedback.style.display = "block";       
     setTimeout(() => {
         feedback.style.display = "none";     
     }, 3000);
 }
+
 
 function getCountry(name) {
     if(countryDisplay.textContent === name.target.attributes[3].textContent){
@@ -46,7 +48,7 @@ function getCountry(name) {
         const idx = countriesList.indexOf(countryDisplay.textContent);
         countriesList.splice(idx, 1);
         countryIdList.splice(idx, 1);
-        showFeedback("Correct!");
+        showFeedback("Correct!", true);
     } else {
         const idx = countriesList.indexOf(countryDisplay.textContent);
         const countryId = countryIdList[idx];
@@ -54,7 +56,7 @@ function getCountry(name) {
         actualCountry.classList.add("incorrect");
         countriesList.splice(idx, 1);
         countryIdList.splice(idx, 1);
-        showFeedback("Wrong!");
+        showFeedback("Wrong!", false);
     }
 
     // When game is over
@@ -72,4 +74,26 @@ function getCountry(name) {
     countryDisplay.textContent = randomCountry; 
 }
 
-  
+// When the button is clicked instead of an answer
+next.addEventListener("click", () => {
+    const currentName = countryDisplay.textContent;
+    const idx = countriesList.indexOf(currentName);
+
+    const countryId = countryIdList[idx];
+    const currentCountry = document.querySelector(`#${countryId}`);
+    currentCountry.classList.add("incorrect"); 
+    countriesList.splice(idx, 1);
+    countryIdList.splice(idx, 1);
+
+   
+    if (countriesList.length === 0) {
+        setTimeout(() => {
+            const restart = confirm(`Well done! Your final score is ${scoreNum}. Press OK to restart.`);
+            if (restart) location.reload();
+        }, 500);
+        return;
+    }
+
+    const randomCountry = countriesList[Math.floor(Math.random() * countriesList.length)];
+    countryDisplay.textContent = randomCountry;
+});
