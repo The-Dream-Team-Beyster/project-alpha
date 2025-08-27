@@ -43,6 +43,7 @@ next.addEventListener("click", () => {
 
 // changes start game text to next country
 next.addEventListener("click", () => {
+    
     next.textContent = "Next Country";
 }, { once: true });
 
@@ -114,3 +115,8 @@ next.addEventListener("click", () => {
     const randomCountry = countriesList[Math.floor(Math.random() * countriesList.length)];
     countryDisplay.textContent = randomCountry;
 });
+
+document.getElementById('logout').addEventListener('click', () => {
+    localStorage.removeItem('token');
+    window.location.assign('./client/login/login.html')
+})
