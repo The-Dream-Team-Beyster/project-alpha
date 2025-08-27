@@ -13,6 +13,23 @@ countries.forEach( country => {
     //country.addEventListener("onclick", displayName(country.attributes[3].textContent))
 })
 
+async function fetchCountry() {
+    try {
+        const respData = await fetch(`http://localhost:4000/location/GetAllCountries`);
+
+        if (respData.ok) {
+            const allCountryNames = await respData.json();
+            console.log(allCountryNames);
+        } else {
+            throw "Something has gone wrong with one of the API requests";
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+fetchCountry()
+
 countries.forEach((e) => {
         e.addEventListener("click", (i) => {
             getCountry(i)
