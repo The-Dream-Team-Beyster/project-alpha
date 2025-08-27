@@ -7,14 +7,23 @@ class Location {
         this.funFact = funFact
     }
 
-    static async getCountryName() {
-        const response = await db.query("SELECT name FROM countries ORDER BY RAND() LIMIT 1");
+    static async getAllCountries() {
+        const response = await db.query("SELECT name FROM countries;");
+
+        if (response.rows.length === 0) {
+            throw new Error("No Countries Found")
+        }
+        return response.rows
+    }
+
+    static async getRandomCountry() {
+        const response = await db.query("SELECT name FROM countries ORDER BY RAND() LIMIT 1;");
 
         if (response.rows.length === 0) {
             throw new Error("No Location Found")
         }
 
-        return response.rows.map(g => newCountry(g));
+        return response//.rows.map(g => newCountry(g));
     }
 
     static async getFunFact(name) {
@@ -29,6 +38,4 @@ class Location {
 
 }
 
-console.log("hit 1");
-
-module.exports = {Location};
+module.exports = Location;
