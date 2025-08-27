@@ -17,9 +17,10 @@ CREATE TABLE user_account (
 );
 
 CREATE TABLE countries (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(100) NOT NULL,
-    funfact TEXT
+    funfact VARCHAR(500) NOT NULL,
+    PRIMARY KEY (id)
 );
 
 INSERT INTO countries (name, funfact) VALUES

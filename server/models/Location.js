@@ -29,6 +29,4 @@ class Location {
 
 }
 
-console.log("hit 1");
-
 module.exports = {Location};
