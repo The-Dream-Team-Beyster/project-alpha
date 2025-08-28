@@ -12,7 +12,7 @@ class User {
 
     static async getHighscore() {
         const response = await db.query("SELECT username, high_score FROM user_account ORDER BY high_score DESC;");
-        if (response.rows.length != 1) {
+        if (response.rows.length === 0) {
             throw new Error("Unable to locate users.");
         }
         return response.rows;
@@ -48,9 +48,9 @@ class User {
         const response = await db.query("UPDATE user_account SET high_score = $1 WHERE username = $2 RETURNING high_score;",
             [ data.score, data.username ]);
         if (response.rows.length != 1) {
-            throw new Error("Unable to update capital.")
+            throw new Error("Unable to update highscore.")
         }
-        return new Country(response.rows[0]);
+        return response.rows[0];
     }
 }
 
