@@ -36,10 +36,13 @@ INSERT INTO countries (country_id, name, funfact) VALUES
 ('BY', 'Belarus', 'Belarus is called "Europe’s last dictatorship" and is landlocked.'),
 ('CH', 'Switzerland', 'Switzerland is famous for its neutrality and banking system.'),
 ('CZ', 'Czech Republic', 'The Czech Republic has over 2,000 castles, more than any other country in Europe.'),
+('CY', 'Cyprus', 'Cyprus is the third largest island in the Mediterranean Sea.'),
 ('DE', 'Germany', 'Germany is the birthplace of both the printing press and the automobile.'),
 ('DK', 'Denmark', 'Denmark consistently ranks among the world’s happiest countries.'),
 ('EE', 'Estonia', 'Estonia is a leader in digital governance and was the first country to offer e-residency.'),
+('ES', 'Spain', 'Spain is the most mountainous country in Europe after Switzerland.'),
 ('FI', 'Finland', 'Finland is known as the land of a thousand lakes, though it actually has around 188,000.'),
+('FR', 'France', 'France is the largest country in the European Union by land area.'),
 ('GB', 'United Kingdom', 'The UK is made up of four countries: England, Scotland, Wales, and Northern Ireland.'),
 ('GE', 'Georgia', 'Georgia is considered the birthplace of wine, with winemaking traditions dating back 8,000 years.'),
 ('GR', 'Greece', 'Greece is the birthplace of democracy and the Olympic Games.'),
@@ -64,4 +67,6 @@ INSERT INTO countries (country_id, name, funfact) VALUES
 ('SK', 'Slovakia', 'Slovakia has more than 6,000 caves beneath its mountains.'),
 ('SI', 'Slovenia', 'Slovenia is the only country with “love” in its name.'),
 ('SE', 'Sweden', 'Sweden is the birthplace of the Nobel Prize.'),
-('TR', 'Turkey', 'Istanbul, Turkey, is the only city in the world that spans two continents.');
+('TR', 'Turkey', 'Istanbul, Turkey, is the only city in the world that spans two continents.'),
+('UA', 'Ukraine', 'Ukraine is the largest country entirely in Europe by land area.'),
+('XK', 'Kosovo', 'Kosovo is one of the most mountainous countries in the Balkans.');
