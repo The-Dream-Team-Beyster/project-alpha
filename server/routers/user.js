@@ -6,5 +6,6 @@ const userRouter = Router();
 
 userRouter.post("/register", userController.register);
 userRouter.post("/login", userController.login);
+userRouter.patch("/", userController.update)
 
 module.exports = userRouter;

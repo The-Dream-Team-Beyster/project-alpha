@@ -48,7 +48,26 @@ async function login(req, res) {
     }
 }
 
+async function update(req, res) {
+    const {score, token} = req.body;
+    try {
+      const payload = jwt.verify(token, process.env.SECRET_TOKEN)
+      const username = payload.username;
+      const user = await User.getOneByUsername(username);
+      const data = {username: username, score: score}
+      let result
+      if(user.high_score < score){
+        result = await user.update(data);
+      }
+      else{
+        console.log('better luck next time!')
+      }
+      res.status(200).send({data: result})
+    } catch (err) {
+      res.status(401).json({ error: err.message });
+    }
+}
 
 module.exports = {
-    register, login
+    register, login, update
 }                           
