@@ -8,11 +8,7 @@ let scoreNum = 0;
 
 const countriesList = [];
 const countryIdList = [];
-
-countries.forEach(country => {
-    countriesList.push(country.attributes[3].textContent);
-    countryIdList.push(country.attributes[2].textContent);
-});
+const funFacts = [];
 
 async function fetchCountry() {
     try {
@@ -20,7 +16,12 @@ async function fetchCountry() {
 
         if (respData.ok) {
             const allCountryNames = await respData.json();
-            console.log(allCountryNames);
+            console.log(allCountryNames)
+            for(i = 0; i < allCountryNames.length; i++){
+                countriesList.push(allCountryNames[i].name);
+                countryIdList.push(allCountryNames[i].country_id);
+                funFacts.push(allCountryNames[i].funfact);
+            }
         } else {
             throw "Something has gone wrong with one of the API requests";
         }
@@ -60,24 +61,30 @@ function showFeedback(text, correct) {
 
 
 async function getCountry(name) {
+    let funFactContent = ''
     if(countryDisplay.textContent === name.target.attributes[3].textContent){
         scoreNum += 1;
         name.target.classList.add("correct");
         score.textContent = `Score : ${scoreNum}`;
         const idx = countriesList.indexOf(countryDisplay.textContent);
+        funFactContent = funFacts[idx]
         countriesList.splice(idx, 1);
         countryIdList.splice(idx, 1);
+        funFacts.splice(idx, 1);
         showFeedback("Correct!", true);
     } else {
         const idx = countriesList.indexOf(countryDisplay.textContent);
         const countryId = countryIdList[idx];
         const actualCountry = document.querySelector(`#${countryId}`);
         actualCountry.classList.add("incorrect");
+        funFactContent = funFacts[idx]
         countriesList.splice(idx, 1);
         countryIdList.splice(idx, 1);
+        funFacts.splice(idx, 1);
         showFeedback("Wrong!", false);
     }
-
+    const funFact = document.querySelector('#fun-fact')
+    funFact.textContent = funFactContent
     // When game is over
     if (countriesList.length === 0) {
         const options = {

@@ -1,14 +1,15 @@
 const db = require("../db/connect");
 
 class Location {
-    constructor({id, name, funFact}) {
+    constructor({id, country_id, name, funFact}) {
         this.id = id;
+        this.country_id = country_id;
         this.name = name;
         this.funFact = funFact
     }
 
     static async getAllCountries() {
-        const response = await db.query("SELECT name FROM countries;");
+        const response = await db.query("SELECT name, country_id, funFact FROM countries;");
 
         if (response.rows.length === 0) {
             throw new Error("No Countries Found")
