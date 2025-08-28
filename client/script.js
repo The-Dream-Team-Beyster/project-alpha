@@ -101,7 +101,7 @@ async function getCountry(name) {
 
         const response = await fetch(`http://localhost:3000/users/`, options);
         const data = await response.json();
-    
+        
         if (response.status == 200) {
             console.log("updated!")
         } else {

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geographical Boogie - Leaderboard</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="lbscript.js"></script>
 </head>
 <body>
     <h1>Leaderboard</h1>
@@ -14,7 +15,19 @@
             <li><a href="index.html" class="nav-link">Game</a></li>
             <li><a href="leaderboard.html" class="nav-link active">Leaderboard</a></li>
         </ul>
-        
+    <div id="leaderboard" class="container">
+        <!-- scores will be inserted by the script here -->
+    </div>
+        <table id="table" class ="table">
+            <thread>
+                <tr>
+                    <th class="username">Username</th>
+                    <th class="highscore">Highscore</th>
+                </tr>
+            </thread>
+            <tbody>
+            </tbody>
+        </table>
         <div id="map"></div>
     </nav>
 </body>

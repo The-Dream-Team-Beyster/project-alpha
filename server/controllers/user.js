@@ -68,6 +68,16 @@ async function update(req, res) {
     }
 }
 
+async function getHighscore(req, res) {
+    try {
+        const scores = await User.getHighscore();
+        res.status(200).json(scores);
+    } catch (err) {
+        res.status(500).json({"error": err.message})
+    }
+}
+
+
 module.exports = {
-    register, login, update
+    register, login, update, getHighscore
 }                           

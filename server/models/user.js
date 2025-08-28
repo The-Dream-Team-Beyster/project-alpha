@@ -10,6 +10,14 @@ class User {
         this.isAdmin = is_admin;
     }
 
+    static async getHighscore() {
+        const response = await db.query("SELECT username, high_score FROM user_account ORDER BY high_score DESC;");
+        if (response.rows.length != 1) {
+            throw new Error("Unable to locate users.");
+        }
+        return response.rows;
+    }
+
     static async getOneById(id) {
         const response = await db.query("SELECT * FROM user_account WHERE user_id = $1", [id]);
         if (response.rows.length != 1) {
