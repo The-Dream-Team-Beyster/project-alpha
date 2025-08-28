@@ -2,10 +2,11 @@ const db = require('../db/connect');
 
 class User {
 
-    constructor({ user_id, username, password, is_admin }) {
+    constructor({ user_id, username, password, high_score = 0, is_admin }) {
         this.id = user_id;
         this.username = username;
         this.password = password;
+        this.high_score = high_score;
         this.isAdmin = is_admin;
     }
 
@@ -27,11 +28,21 @@ class User {
 
     static async create(data) {
         const { username, password, isAdmin } = data;
-        let response = await db.query("INSERT INTO user_account (username, password) VALUES ($1, $2) RETURNING user_id;",
+        let response = await db.query("INSERT INTO user_account (username, password, high_score) VALUES ($1, $2, 0) RETURNING user_id;",
             [username, password]);
         const newId = response.rows[0].user_id;
         const newUser = await User.getOneById(newId);
         return newUser;
+    }
+
+    async update(data) {
+        console.log(data)
+        const response = await db.query("UPDATE user_account SET high_score = $1 WHERE username = $2 RETURNING high_score;",
+            [ data.score, data.username ]);
+        if (response.rows.length != 1) {
+            throw new Error("Unable to update capital.")
+        }
+        return new Country(response.rows[0]);
     }
 }
 

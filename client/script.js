@@ -3,6 +3,7 @@ const score = document.querySelector("#score");
 const next = document.querySelector("#next-btn");
 const countries = [...document.querySelectorAll(".allPaths")];
 const feedback = document.querySelector("#feedback"); 
+const logout = document.querySelector('.login')
 let scoreNum = 0;
 
 const countriesList = [];
@@ -15,7 +16,7 @@ countries.forEach(country => {
 
 async function fetchCountry() {
     try {
-        const respData = await fetch(`http://localhost:4000/location/GetAllCountries`);
+        const respData = await fetch(`http://localhost:3000/location/GetAllCountries`);
 
         if (respData.ok) {
             const allCountryNames = await respData.json();
@@ -58,7 +59,7 @@ function showFeedback(text, correct) {
 }
 
 
-function getCountry(name) {
+async function getCountry(name) {
     if(countryDisplay.textContent === name.target.attributes[3].textContent){
         scoreNum += 1;
         name.target.classList.add("correct");
@@ -79,6 +80,26 @@ function getCountry(name) {
 
     // When game is over
     if (countriesList.length === 0) {
+        const options = {
+            method: "PATCH",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                score: scoreNum,
+                token: localStorage.token
+            })
+        }
+
+        const response = await fetch(`http://localhost:3000/users/`, options);
+        const data = await response.json();
+    
+        if (response.status == 200) {
+            console.log("updated!")
+        } else {
+            alert(data.error);
+        }
         setTimeout(() => {  
             const restart = confirm(`Well done! Your final score is ${scoreNum}. Press OK to restart.`);
             if (restart) {
@@ -93,7 +114,9 @@ function getCountry(name) {
 }
 
 // When the button is clicked instead of an answer
-next.addEventListener("click", () => {
+next.addEventListener("click", skip() )
+    
+async function skip() {
     const currentName = countryDisplay.textContent;
     const idx = countriesList.indexOf(currentName);
 
@@ -105,6 +128,26 @@ next.addEventListener("click", () => {
 
    
     if (countriesList.length === 0) {
+        const options = {
+            method: "PATCH",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                score: scoreNum,
+                token: localStorage.token
+            })
+        }
+
+        const response = await fetch(`http://localhost:3000/users/`, options);
+        const data = await response.json();
+    
+        if (response.status == 200) {
+            console.log("updated!")
+        } else {
+            alert(data.error);
+        }        
         setTimeout(() => {
             const restart = confirm(`Well done! Your final score is ${scoreNum}. Press OK to restart.`);
             if (restart) location.reload();
@@ -114,9 +157,9 @@ next.addEventListener("click", () => {
 
     const randomCountry = countriesList[Math.floor(Math.random() * countriesList.length)];
     countryDisplay.textContent = randomCountry;
-});
+};
 
-document.getElementById('logout').addEventListener('click', () => {
+logout.addEventListener('click', () => {
     localStorage.removeItem('token');
     window.location.assign('./client/login/login.html')
 })
