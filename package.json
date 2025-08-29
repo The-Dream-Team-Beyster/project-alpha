@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "unit-test": "jest --watchAll --verbose --detectOpenHandles --runInBand",
     "dev": "nodemon -L server/index.js",
     "setup-db": "node ./server/db/setup.js"
   },
@@ -12,7 +13,9 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "jest": "^30.1.1",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.4"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
